@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Meli Font';
+  src:  url('./meli-font.eot?btovzt');
+  src:  url('./meli-font.eot?btovzt#iefix') format('embedded-opentype'),
+    url('./meli-font.ttf?btovzt') format('truetype'),
+    url('./meli-font.woff?btovzt') format('woff'),
+    url('./meli-font.svg?btovzt#meli-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="meli-font"], [class*=" meli-font"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Meli Font' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.clock:before {
+  content: "\e900";
+}
+.search:before {
+  content: "\e901";
+}

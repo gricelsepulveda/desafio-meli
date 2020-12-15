@@ -1,0 +1,39 @@
+@import "../../assets/fonts/meli-font.css";
+@import "./mixins.scss";
+@import "./vars.scss";
+
+h1, h2, h3, h4, h5, h6, p, span, a{
+    @include clean-webkit;
+    @include zero-soft;
+}
+
+ul, li {
+    @include clean-list;
+    @include zero-soft;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    font-family: 'Proxima Nova';
+    box-sizing: border-box;
+} 
+
+body{
+    font-family: 'Proxima Nova';
+    padding-top: 50px;
+    background-color: $grey;
+    position: relative;
+}
+
+.root{
+    width: 100%;
+}
+
+.ml-layout{
+    max-width: 960px;
+    display: block;
+    margin:  0 auto;
+}
