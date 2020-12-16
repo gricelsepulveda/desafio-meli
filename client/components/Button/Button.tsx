@@ -5,14 +5,29 @@ import "./button.scss" //Styles
 
 type ButtonProps = {
     value: string,
-    onClick: () => void,
-    color: 'color-1' | 'color-2'
+    onClick: (Event: any) => void,
+    color: 'color-1' | 'color-2',
+    disabled: boolean,
+    size: 'auto' | 'full'
 }
 
 const Button:React.FunctionComponent<ButtonProps> = (props) => {
 
+    const handleClick = (Event:any) => {
+        props.onClick(Event)
+    }
+
     return (
-        <button>
+        <button 
+            className={
+                `ml-button 
+                ${props.color} 
+                ${props.disabled ? 'disabled' : ''}
+                ${props.size == 'full' ? props.size : ''}
+            `}
+            disabled={props.disabled}
+            onClick={handleClick}
+        >
             {props.value}
         </button>
     )

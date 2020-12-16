@@ -47,7 +47,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                 normalResults.push(
                     <li 
                         className="ml-search-list-element"
-                        key={`${result.name}-${i}`}
+                        key={`${result.name.split(' ').join('-')}-${i}`}
                         onClick={() => handleClick(result.link)}
                     >
                         <i 
@@ -63,7 +63,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                 promotedResults.push(
                     <li 
                         className={'ml-search-list-element official'}
-                        key={`${result.name}-${i}`}
+                        key={`${result.name.split(' ').join('-')}-${i}`}
                         onClick={() => handleClick(result.link)}
                     >
                         <i 

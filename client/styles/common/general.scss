@@ -2,7 +2,7 @@
 @import "./mixins.scss";
 @import "./vars.scss";
 
-h1, h2, h3, h4, h5, h6, p, span, a{
+h1, h2, h3, h4, h5, h6, p, span, a, figure, article, section {
     @include clean-webkit;
     @include zero-soft;
 }

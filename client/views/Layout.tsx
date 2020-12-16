@@ -7,9 +7,11 @@ import Breadcrumb from "../components/Breadcrumb/Breadcrumb"
 
 //Views
 import SearchView from "./SearchView"
+import ProductView from "./ProductView"
 
 //DummyData
 import dummyBreadcrumb from "../components/Breadcrumb/dummyBreadcrumb"
+import productDetailDummy from "./productDetailDummy"
 
 //Styles
 import "../styles/common/general.scss"
@@ -29,7 +31,8 @@ const Layout:React.FunctionComponent<LayoutProps> = (props) => {
                 mobileLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-mobile.png"
             />
             <Breadcrumb data={dummyBreadcrumb}/>
-            <SearchView/>
+            {/* <SearchView/> */}
+            <ProductView productData={productDetailDummy}/>
         </div>
     )
 }

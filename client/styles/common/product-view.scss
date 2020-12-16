@@ -1,0 +1,80 @@
+@import "./mixins.scss";
+@import "./vars.scss";
+
+.ml-section-product-view{
+    width: 100%;
+    padding: 20px;
+    background-color: $white;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    .ml-product-view-image-wrapper{
+        @include flex-row-center;
+        .ml-product-view-image{
+            width: 400px;
+            height: 400px;
+            background: {
+                size: cover;
+                position: center;
+                repeat: no-repeat;
+            }
+        }
+    }
+    .ml-product-view-details-wrapper{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
+        align-content: flex-start;
+        .ml-product-view-details{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            align-content: flex-start;
+            .ml-product-view-details-intro{
+                margin-bottom: 10px;
+                color: $black;
+                font: {
+                    size: 13px;
+                    weight: 400;
+                }
+            }
+            .ml-product-view-details-title{
+                margin-bottom: 10px;
+                color: $black;
+                font: {
+                    size: 18px;
+                    weight: 600;
+                }
+            }
+            .ml-product-view-price{
+                margin-bottom: 40px;
+                color: $black;
+                font: {
+                    size: 28px;
+                    weight: 500;
+                }
+            }
+        }
+    }
+    .ml-product-view-description{
+        padding-top: 40px;
+        .ml-product-view-description-title{
+            margin-bottom: 10px;
+            color: $black;
+            font: {
+                size: 18px;
+                weight: 500;
+            }
+        }
+        .ml-product-view-description-text{
+            margin-bottom: 10px;
+            color: rgba($black, 0.75);
+            font: {
+                size: 13px;
+                weight: 400;
+            }
+        }
+    }
+}
