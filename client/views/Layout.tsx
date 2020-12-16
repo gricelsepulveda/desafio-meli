@@ -6,12 +6,12 @@ import Navbar from "../components/Navbar/Navbar"
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb"
 
 //Views
-import SearchView from "./SearchView"
-import ProductView from "./ProductView"
+import SearchView from "./search/SearchView"
+import ProductView from "./product/ProductView"
 
 //DummyData
 import dummyBreadcrumb from "../components/Breadcrumb/dummyBreadcrumb"
-import productDetailDummy from "./productDetailDummy"
+import productDetailDummy from "./product/productDetailDummy"
 
 //Styles
 import "../styles/common/general.scss"

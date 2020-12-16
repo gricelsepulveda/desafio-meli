@@ -2,13 +2,13 @@
 import React from "react"
 
 //Components
-import Button from "../components/Button/Button"
+import Button from "../../components/Button/Button"
 
 //Aux
-import { getPrice } from "../aux/price"
+import { getPrice } from "../../aux/price"
 
 //Styles
-import '../styles/common/product-view.scss'
+import '../../styles/views/product-view.scss'
 
 export type ProductDetailType = {
     name: string,
