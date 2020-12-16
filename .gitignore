@@ -108,3 +108,5 @@ client/.DS_Store
 .DS_Store
 
 *.lock
+
+server/package-lock.json
