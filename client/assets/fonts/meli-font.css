@@ -28,6 +28,11 @@
 .clock:before {
   content: "\e900";
 }
-.search:before {
+
+.indicator:before {
   content: "\e901";
+}
+
+.search:before {
+  content: "\e902";
 }

@@ -1,7 +1,17 @@
 //IMPORTS
 import React from "react"
+
+//Components
 import Navbar from "../components/Navbar/Navbar"
-import ProductList from "../components/ProductList/ProductList"
+import Breadcrumb from "../components/Breadcrumb/Breadcrumb"
+
+//Views
+import SearchView from "./SearchView"
+
+//DummyData
+import dummyBreadcrumb from "../components/Breadcrumb/dummyBreadcrumb"
+
+//Styles
 import "../styles/common/general.scss"
 
 export type viewport = 'mobile' | 'desktop'
@@ -18,7 +28,8 @@ const Layout:React.FunctionComponent<LayoutProps> = (props) => {
                 desktopLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-desktop.png"
                 mobileLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-mobile.png"
             />
-            <ProductList/>
+            <Breadcrumb data={dummyBreadcrumb}/>
+            <SearchView/>
         </div>
     )
 }

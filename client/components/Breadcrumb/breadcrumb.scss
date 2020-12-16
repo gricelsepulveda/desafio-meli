@@ -1,0 +1,58 @@
+@import "../../styles/common/mixins.scss";
+@import "../../styles/common/vars.scss";
+
+.ml-breadcrumb{
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+   align-content: center;
+   width: 100%;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   .ml-breadcrumb-element{
+        height: 100%;
+        @include flex-row-center;
+        margin-right: 10px;
+        color: rgba($black, 0.75);
+        font: {
+            size: 13px;
+            weight: 400;
+        }
+        text: {
+            align: left;
+            transform: capitalize;
+        }
+        &:after{
+            margin-left: 10px;
+            display: inline-block;
+            font: {
+                family: 'Meli Font';
+                size: 8px;
+            }
+            color: rgba($black, 0.75);
+            content: '\e901';
+
+        }
+        &:last-of-type{
+            color: $black;
+            font-weight: 500;
+            &:after{
+                display: none;
+            }
+        }
+        .ml-breadcrumb-link{
+            height: 100%;
+            color: inherit;
+            &:visited{
+                color: inherit;
+                &:focus, &:hover{
+                    color: $color-2;
+                }
+            }
+            &:focus, &:hover{
+                color: $color-2;
+            }
+        }
+   }
+}
