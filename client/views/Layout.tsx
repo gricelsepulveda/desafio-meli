@@ -12,11 +12,10 @@ import Breadcrumb from "../components/Breadcrumb/Breadcrumb"
 
 //Views
 import SearchView from "./search/SearchView"
-import ProductView from "./product/ProductView"
+import ProductView, { ProductDetail } from "./product/ProductView"
 
 //DummyData
 import dummyBreadcrumb from "../components/Breadcrumb/dummyBreadcrumb"
-import productDetailDummy from "./product/productDetailDummy"
 
 //Styles
 import "../styles/common/general.scss"
@@ -31,6 +30,20 @@ const Layout:React.FunctionComponent = () => {
     const [search, setSearch] = useState<string>('')
     const [searchResult, setSearchResult] = useState<any>([])
     const [selectedProduct, setSelectedProduct] = useState<string>('')
+    const [productData, setProductData] = useState<ProductDetail>({
+        id: '',
+        title: '',
+        picture: '',
+        price: {
+            currency: 'ARS',
+            amount: 0,
+            decimals: 0
+        },
+        condition: '',
+        free_shipping: false,
+        sold_quantity: 0,
+        description: ''
+    })
 
     const contextStates:ContextType = {
         //General states
@@ -44,7 +57,9 @@ const Layout:React.FunctionComponent = () => {
         searchResult: searchResult,
         setSearchResult: setSearchResult,
         selectedProduct: selectedProduct,
-        setSelectedProduct: setSelectedProduct
+        setSelectedProduct: setSelectedProduct,
+        productData: productData,
+        setProductData: setProductData
     }
 
     const handleSearch = (search:string) => {
@@ -65,8 +80,8 @@ const Layout:React.FunctionComponent = () => {
                         <Route exact path={'/'}>
                             <SearchView/>
                         </Route>
-                        <Route exact path={'/product'}>
-                            <ProductView productData={productDetailDummy}/>
+                        <Route path={'/product/:id'}>
+                            <ProductView/>
                         </Route>
                     </Switch>
                 </div>

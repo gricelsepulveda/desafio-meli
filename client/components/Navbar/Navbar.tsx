@@ -14,7 +14,10 @@ type Navprops = {
 
 const Navbar:React.FunctionComponent<Navprops> = (props) => {
     const context = useContext(Context)
-    
+    const handleHome = () => {
+        //@ts-ignore
+        window.location = 'http://localhost:8080'
+    }
     return (
         <nav className={`ml-navbar ${props.color != undefined ? props.color : ''}`}>
             <img 
@@ -22,6 +25,7 @@ const Navbar:React.FunctionComponent<Navprops> = (props) => {
                 src={context.viewport == 'mobile' ? props.mobileLogo : props.desktopLogo}
                 alt="logo mercadolibre"
                 tabIndex={0}
+                onClick={handleHome}
             />
             <Search 
                 placeholder="Buscar productos, marcas y más..."

@@ -23,6 +23,7 @@ type ProductProps = {
 }
 
 const List:React.FunctionComponent<ProductProps> = (props) => {
+    const empty = <p className="ml-empty">Usa el buscador para ver resultados</p>
     return (
         <ul className="ml-product-list-wrapper">
             {
@@ -42,7 +43,7 @@ const List:React.FunctionComponent<ProductProps> = (props) => {
                             )
                         }
                     }) 
-                    : null : null
+                    : empty : empty
             }
         </ul>
     )

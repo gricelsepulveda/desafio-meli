@@ -1,6 +1,7 @@
 //IMPORTS
 import React, { useState, useContext, useEffect } from "react"
 import { ProductType } from "../ProductList/List"
+import { Link } from "react-router-dom"
 
 //Context
 import Context from "../../views/Context"
@@ -46,17 +47,18 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                 for (let i:number=0; i < (data.length > props.maxItems ? props.maxItems : data.length); i++){
                     let result = data[i]
                     normalResults.push(
-                        <li 
-                            className="ml-search-list-element"
-                            key={`${result.title.split(' ').join('-')}-${i}`}
-                            onClick={() => handleClick('')}
-                            tabIndex={0}
-                        >
-                            <i className="ml-search-list-icon meli-font search"/>
-                            <p className="ml-search-list-element-text">
-                                { result.title }
-                            </p>
-                        </li>
+                        <Link to={`/product/${result.id}`} key={`${result.title.split(' ').join('-')}-${i}`}>
+                            <li 
+                                className="ml-search-list-element"
+                                onClick={() => handleClick('')}
+                                tabIndex={0}
+                            >
+                                <i className="ml-search-list-icon meli-font search"/>
+                                <p className="ml-search-list-element-text">
+                                    { result.title }
+                                </p>
+                            </li>
+                        </Link>
                     )
                 }
             }

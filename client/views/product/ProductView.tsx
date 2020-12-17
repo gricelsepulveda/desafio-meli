@@ -1,5 +1,6 @@
 //IMPORTS
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import Context from "../Context"
 
 //Components
 import Button from "../../components/Button/Button"
@@ -9,44 +10,53 @@ import { getPrice } from "../../aux/price"
 
 //Styles
 import '../../styles/views/product-view.scss'
+import { ProductType } from "../../components/ProductList/List"
 
-export type ProductDetailType = {
-    name: string,
-    condition: string,
-    sold: number,
-    price: number,
-    description: string,
-    image: string
+export interface ProductDetail extends ProductType {
+    sold_quantity: number,
+    description: string
 }
 
-type ProductViewProps = {
-    productData: ProductDetailType
-}
+const ProductView:React.FunctionComponent = () => {
+    const context = useContext(Context)
 
-const ProductView:React.FunctionComponent<ProductViewProps> = (props) => {
+    const fetchProduct = async () => {
+        let id = window.location.href.split('/')[4]
+        const data = await fetch(`http://localhost:3000/api/items/${id}`)
+        .then((response:any) => {
+            return response.json()
+        })
+        context.setProductData(data.data.item)
+    }
+
+    useEffect(() => {
+        fetchProduct()
+    }, [context.selectedProduct])
+
+
     return (
         <section className="ml-section-product-view">
             <div className="ml-product-view-image-wrapper">
                 <figure
                     className="ml-product-view-image"
-                    style={{backgroundImage: `URL("${props.productData.image}")`}}
+                    style={{backgroundImage: `URL("${context.productData.picture}")`}}
                     tabIndex={0}
                 />
             </div>
             <div className="ml-product-view-details-wrapper">
                 <article className="ml-product-view-details">
                     <p className="ml-product-view-details-intro" tabIndex={0}>
-                        {`${props.productData.condition} `} 
+                        {`${context.productData.condition} `} 
                         <span>
-                        {`${props.productData.sold} `}
+                        {`${context.productData.sold_quantity} `}
                         vendidos
                         </span>
                     </p>
                     <h1 className="ml-product-view-details-title" tabIndex={0}>
-                        { props.productData.name }
+                        { context.productData.title }
                     </h1>
                     <span className="ml-product-view-price" tabIndex={0}>
-                        { getPrice(props.productData.price, 'es-CL', 'clp') }
+                        { getPrice(context.productData.price.amount, 'es-AR', context.productData.price.currency) }
                     </span>
                     <Button 
                         value="comprar"
@@ -63,7 +73,7 @@ const ProductView:React.FunctionComponent<ProductViewProps> = (props) => {
                     Descripción del producto
                 </h2>
                 <p className="ml-product-view-description-text" tabIndex={0}>
-                    { props.productData.description }
+                    { context.productData.description }
                 </p>
             </div>
         </section>

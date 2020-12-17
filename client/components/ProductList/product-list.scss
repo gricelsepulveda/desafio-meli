@@ -12,6 +12,12 @@
         align-content: flex-start;
         justify-content: flex-start;
         width: 100%;
+        .ml-empty{
+            padding-top: 80px;
+            padding-bottom: 80px;
+            text-align: center;
+            width: 100%;
+        }
         .ml-product-list-element{
             width: 100%;
             border-bottom: 1px solid rgba($black, 0.1);

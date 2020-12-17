@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import { SearchResult } from '../components/Search/Search';
-
+import { ProductDetail } from './product/ProductView'
 
 export type ContextType = {
     //General states
@@ -14,7 +14,9 @@ export type ContextType = {
     searchResult: SearchResult,
     setSearchResult: (param: ContextType['searchResult']) => void,
     selectedProduct: string,
-    setSelectedProduct: (param: ContextType['selectedProduct']) => void
+    setSelectedProduct: (param: ContextType['selectedProduct']) => void,
+    productData: ProductDetail,
+    setProductData: (param: ContextType['productData']) => void
 }
 
 const context = createContext<ContextType>({
@@ -36,7 +38,22 @@ const context = createContext<ContextType>({
     },
     setSearchResult: () => null,
     selectedProduct: '',
-    setSelectedProduct: () => null
+    setSelectedProduct: () => null,
+    productData: {
+        id: '',
+        title: '',
+        picture: '',
+        price: {
+            currency: 'ARS',
+            amount: 0,
+            decimals: 0
+        },
+        condition: '',
+        free_shipping: false,
+        sold_quantity: 0,
+        description: ''
+    },
+    setProductData: (param: ContextType['productData']) => null
 })
 
 context.displayName = "Context"
