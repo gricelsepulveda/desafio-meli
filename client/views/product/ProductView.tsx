@@ -30,21 +30,22 @@ const ProductView:React.FunctionComponent<ProductViewProps> = (props) => {
                 <figure
                     className="ml-product-view-image"
                     style={{backgroundImage: `URL("${props.productData.image}")`}}
+                    tabIndex={0}
                 />
             </div>
             <div className="ml-product-view-details-wrapper">
                 <article className="ml-product-view-details">
-                    <p className="ml-product-view-details-intro">
+                    <p className="ml-product-view-details-intro" tabIndex={0}>
                         {`${props.productData.condition} `} 
                         <span>
                         {`${props.productData.sold} `}
                         vendidos
                         </span>
                     </p>
-                    <h1 className="ml-product-view-details-title">
+                    <h1 className="ml-product-view-details-title" tabIndex={0}>
                         { props.productData.name }
                     </h1>
-                    <span className="ml-product-view-price">
+                    <span className="ml-product-view-price" tabIndex={0}>
                         { getPrice(props.productData.price, 'es-CL', 'clp') }
                     </span>
                     <Button 
@@ -53,14 +54,15 @@ const ProductView:React.FunctionComponent<ProductViewProps> = (props) => {
                         size="full"
                         disabled={false}
                         onClick={() => alert('flujo de compra')}
+                        tabIndex={0}
                     />
                 </article>
             </div>
             <div className="ml-product-view-description">
-                <h2 className="ml-product-view-description-title">
+                <h2 className="ml-product-view-description-title" tabIndex={0}>
                     Descripción del producto
                 </h2>
-                <p className="ml-product-view-description-text">
+                <p className="ml-product-view-description-text" tabIndex={0}>
                     { props.productData.description }
                 </p>
             </div>

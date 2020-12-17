@@ -37,7 +37,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
     const renderList = (data:SearchResult[]) => {
         let normalResults:React.ReactElement[] = []
         let promotedResults:React.ReactElement[] = [
-            <h2 className="ml-search-list-element-title">
+            <h2 className="ml-search-list-element-title" key="ml-search-list-element-title">
                 Tiendas oficiales
             </h2>
         ]
@@ -49,6 +49,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                         className="ml-search-list-element"
                         key={`${result.name.split(' ').join('-')}-${i}`}
                         onClick={() => handleClick(result.link)}
+                        tabIndex={0}
                     >
                         <i 
                             className={`ml-search-list-icon meli-font ${result.history ? "clock" : "search"}`}
@@ -63,16 +64,19 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                 promotedResults.push(
                     <li 
                         className={'ml-search-list-element official'}
-                        key={`${result.name.split(' ').join('-')}-${i}`}
+                        key={`official-${result.name.split(' ').join('-')}-${i}`}
                         onClick={() => handleClick(result.link)}
+                        tabIndex={0}
                     >
                         <i 
                             className={`ml-search-list-icon meli-font ${result.history ? "clock" : "search"}`}
                         />
                         <p className="ml-search-list-element-text">
-                            {`${result.name} en `}                        <a 
+                            {`${result.name} en `}                        
+                            <a 
                                 className="ml-search-list-element-link"
                                 href={result.promotedShopLink}
+                                tabIndex={0}
                             >
                                 {`${result.promotedShopName}`}
                             </a>
@@ -96,8 +100,9 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                     type="text"
                     className="ml-search-input"
                     placeholder={props.placeholder ? props.placeholder : 'Buscar...'}
+                    tabIndex={0}
                 />
-                <button type="button" className="ml-search-button">
+                <button type="button" className="ml-search-button" tabIndex={0}>
                     <i className="ml-navbar-icon meli-font search"/>
                 </button>
             </div>

@@ -8,6 +8,9 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 20px;
+    @media #{$sm}{
+        grid-template-columns: 1fr;
+    }
     .ml-product-view-image-wrapper{
         @include flex-row-center;
         .ml-product-view-image{
@@ -18,6 +21,10 @@
                 position: center;
                 repeat: no-repeat;
             }
+            @media #{$sm}{
+                width: 100%;
+                height: 300px;
+            }
         }
     }
     .ml-product-view-details-wrapper{
@@ -26,6 +33,9 @@
         justify-content: flex-end;
         align-items: flex-start;
         align-content: flex-start;
+        @media #{$sm}{
+            justify-content: flex-start;
+        }
         .ml-product-view-details{
             display: flex;
             flex-direction: column;

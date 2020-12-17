@@ -15,7 +15,11 @@ const SearchView:React.FunctionComponent = () => {
     const [searchResult, setSearchResult] = useState([])
 
     const fetchConversations = () => {
-        fetch(`http://localhost:3000/api/items/search/${context.search}`)
+        fetch(`http://localhost:3000/api/items/search/${context.search}`, {
+            headers: {
+                "Content-Type":'application/json'
+            }
+        })
         .then(response => console.log(response))
         .then((data) => console.log(data))
     }

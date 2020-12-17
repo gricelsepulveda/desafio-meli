@@ -8,7 +8,8 @@ type ButtonProps = {
     onClick: (Event: any) => void,
     color: 'color-1' | 'color-2',
     disabled: boolean,
-    size: 'auto' | 'full'
+    size: 'auto' | 'full',
+    tabIndex: number
 }
 
 const Button:React.FunctionComponent<ButtonProps> = (props) => {
@@ -27,6 +28,7 @@ const Button:React.FunctionComponent<ButtonProps> = (props) => {
             `}
             disabled={props.disabled}
             onClick={handleClick}
+            tabIndex={props.tabIndex}
         >
             {props.value}
         </button>

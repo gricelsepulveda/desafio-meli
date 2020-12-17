@@ -17,7 +17,12 @@ const Navbar:React.FunctionComponent<Navprops> = (props) => {
     
     return (
         <nav className={`ml-navbar ${props.color != undefined ? props.color : ''}`}>
-            <img className="ml-navbar-brand" src={context.viewport == 'mobile' ? props.mobileLogo : props.desktopLogo} alt="logo mercadolibre"/>
+            <img 
+                className="ml-navbar-brand"
+                src={context.viewport == 'mobile' ? props.mobileLogo : props.desktopLogo}
+                alt="logo mercadolibre"
+                tabIndex={0}
+            />
             <Search 
                 placeholder="Buscar productos, marcas y más..."
                 maxItems={5}

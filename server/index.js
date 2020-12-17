@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express();
 const axios = require('axios');
+const cors = require('cors')
+
+const config  = require('./cors')
+app.use(cors(config.application.cors.server))
 
 const formatSearchProductsResults = (data) => {
     let dataFormated = {}

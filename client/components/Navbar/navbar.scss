@@ -4,6 +4,7 @@
 .ml-navbar{
     width: 100%;
     position: fixed;
+    z-index: 2;
     left: 0;
     top: 0;
     height: 50px;
@@ -15,6 +16,13 @@
     padding-left: 20px;
     padding-right: 20px;
     @include shadow;
+    @media #{$sm}{
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .ml-navbar-brand{
         height: 36px;
     }
