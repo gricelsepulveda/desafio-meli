@@ -1,5 +1,5 @@
 //IMPORTS
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext, useEffect, useRef } from "react"
 import { ProductType } from "../../types/types"
 import { Link } from "react-router-dom"
 
@@ -16,6 +16,7 @@ type SearchProps = {
 
 const Search:React.FunctionComponent<SearchProps> = (props) => {
     const context = useContext(Context)
+    const inputRef = useRef(null)
 
     const [active, setActive] = useState(false)
 
@@ -65,17 +66,25 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
         return normalResults
     }
 
-    const fetchResults = async () => {
-        const data = await fetch(`http://localhost:3000/api/items/search/${context.search}`)
+    const fetchResults = async (param:string) => {
+        const data = await fetch(`http://localhost:3000/api/items/search/${param}}`)
         .then((response:any) => {
             return response.json()
         })
         context.setSearchResult(data.data)
     }
 
+    let id =  window.location.href.split('/')[4] != undefined ? window.location.href.split('/')[4] : 0
+    let searchResultUrl = window.location.href.split('/')
+
     useEffect(() => {
-        fetchResults()
-    }, [context.search, window.location.href.split('/')[4]])
+        if (searchResultUrl.length > 4 && context.search == ''){
+            fetchResults(searchResultUrl[4].split('=')[1])
+        }
+        else {
+            fetchResults(context.search)
+        }
+    }, [context.search, id])
 
 
     return (

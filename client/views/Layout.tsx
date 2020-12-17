@@ -1,7 +1,7 @@
 //IMPORTS
 import React, { useState } from "react"
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory, matchPath } from "react-router-dom";
 
 //Context
 import Context, { ContextType } from './Context'
@@ -21,6 +21,7 @@ import  { ProductDetail } from "../types/types"
 import "../styles/common/general.scss"
 
 const Layout:React.FunctionComponent = () => {
+    const history = useHistory();
     const [search, setSearch] = useState<string>('')
     const [searchResult, setSearchResult] = useState<any>([])
     const [selectedProduct, setSelectedProduct] = useState<string>('')
@@ -52,6 +53,10 @@ const Layout:React.FunctionComponent = () => {
 
     const handleSearch = (search:string) => {
         setSearch(search)
+        let currentUrl = history.location.pathname
+        if (currentUrl.indexOf("product") == -1){
+            history.location.search = `?search=${search}`
+        }
     }
 
     return (
@@ -64,6 +69,9 @@ const Layout:React.FunctionComponent = () => {
                     <Breadcrumb/>
                     <Switch>
                         <Route exact path={'/'}>
+                            <SearchView/>
+                        </Route>
+                        <Route path={'/items/?search=:search'}>
                             <SearchView/>
                         </Route>
                         <Route path={'/product/:id'}>
