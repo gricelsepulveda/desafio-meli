@@ -1,7 +1,7 @@
 //IMPORTS
 import React, { useContext } from "react"
 import Search from "../Search/Search"
-import AppContext from "../../views/AppContext"
+import AppContext from "../../views/Context"
 
 import "./navbar.scss" //Styles
 

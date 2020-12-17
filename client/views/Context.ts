@@ -1,22 +1,22 @@
 import { createContext } from 'react';
 import { SearchResult } from '../components/Search/Search';
 
-export type AppContextType = {
+export type ContextType = {
     //General states
     viewport: 'mobile' | 'desktop',
-    setViewport: (param: AppContextType['viewport']) => void,
+    setViewport: (param: ContextType['viewport']) => void,
     activeView: string,
-    setActiveView: (param: AppContextType['activeView']) => void
+    setActiveView: (param: ContextType['activeView']) => void
     //Search related states
     search: string,
-    setSearch: (param: AppContextType['search']) => void,
+    setSearch: (param: ContextType['search']) => void,
     searchResult: any,
-    setSearchResult: (param: AppContextType['searchResult']) => void,
+    setSearchResult: (param: ContextType['searchResult']) => void,
     selectedProduct: string,
-    setSelectedProduct: (param: AppContextType['selectedProduct']) => void
+    setSelectedProduct: (param: ContextType['selectedProduct']) => void
 }
 
-const context = createContext<AppContextType>({
+const context = createContext<ContextType>({
     //General states
     viewport: 'desktop',
     setViewport: () => null,
@@ -31,6 +31,6 @@ const context = createContext<AppContextType>({
     setSelectedProduct: () => null
 })
 
-context.displayName = "AppContext"
+context.displayName = "Context"
 
 export default context
