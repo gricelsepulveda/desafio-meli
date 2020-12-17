@@ -6,7 +6,8 @@ import "./search.scss" //Styles
 
 type SearchProps = {
     placeholder: string | undefined,
-    maxItems: number
+    maxItems: number,
+    onSearch: (search: string) => void
 }
 
 export type SearchResult = {
@@ -20,7 +21,6 @@ export type SearchResult = {
 
 const Search:React.FunctionComponent<SearchProps> = (props) => {
     const [active, setActive] = useState(false)
-    const [search, setSearch] = useState('')
 
     const handleActive = (param: boolean) => {
         setActive(param)
@@ -31,7 +31,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
     }
 
     const handleChange = (Event:any) => {
-        setSearch(Event.currentTarget.value)
+        props.onSearch(Event.currentTarget.value)
     }
 
     const renderList = (data:SearchResult[]) => {
@@ -83,14 +83,6 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
         }
         return [...normalResults, promotedResults]
     }
-
-    useEffect(() => {
-        if (search != ''){
-                fetch(`https://api.mercadolibre.com/sites/MLA/search?q=​:${search}`)
-                .then(response => response.json())
-                .then(results => console.log(results))
-        }
-    }, [search])
 
     return (
         <div 

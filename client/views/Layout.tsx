@@ -1,7 +1,7 @@
 //IMPORTS
 import React, { useState } from "react"
 
-import { Router, Route, Switch, match} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 //Context
 import Context, { ContextType } from './Context'
@@ -47,6 +47,10 @@ const Layout:React.FunctionComponent = () => {
         setSelectedProduct: setSelectedProduct
     }
 
+    const handleSearch = (search:string) => {
+        setSearch(search)
+    }
+
     return (
         <Context.Provider value={contextStates}>
                 <div className="ml-layout">
@@ -54,6 +58,7 @@ const Layout:React.FunctionComponent = () => {
                         color="color-1"
                         desktopLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-desktop.png"
                         mobileLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-mobile.png"
+                        onSearch={handleSearch}
                     />
                     <Breadcrumb data={dummyBreadcrumb}/>
                     <Switch>
