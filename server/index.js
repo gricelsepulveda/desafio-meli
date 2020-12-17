@@ -33,12 +33,11 @@ const setSearchResults = () => {
 }
 
 async function fetch(query) {
-    return axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=:${query}`)
+    return await axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`)
         .then(function (response) {
             // handle success
-            console.log(query)
             console.log(response.data.results);
-            return 'hola'
+            return response.data.results
         })
         .catch(function (error) {
             // handle error
@@ -47,7 +46,9 @@ async function fetch(query) {
 }
 
 //1st endpoint
-app.get('/api/items/:query', function(req, res) {
+app.get('/api/items/:query', async function(req, res) {
+    const products = await fetch(req.params.query)
+    res.send(products)
 });
 
 
