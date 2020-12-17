@@ -38,13 +38,61 @@ const formatSearchProductsResults = (data) => {
 
     const dataFormated = {
         author: {
-            name: '',
-            lastname: '',
+            name: 'Gricel',
+            lastname: 'Sepulveda',
         },
         categories: getCategories(), 
         items: getItems()
     }
 
+    return dataFormated
+}
+
+const formatProduct = (dataId, dataDescription) => {
+    const translateCondition = (cond) => {
+        let condition = cond
+        switch (condition) {
+            case 'new':
+                condition = 'nuevo'
+                break
+            case 'used':
+                condition = 'usado'
+                break
+            default:
+                condition = ''
+                break
+        }
+        return condition
+    }
+
+    const getMainPicture = (pictureArr) => {
+        let pictureUrl = ''
+        if (pictureArr[0] != undefined){
+            pictureUrl = pictureArr[0].url
+        }
+        return pictureUrl
+    }
+
+    const dataFormated = {
+        author: {
+            name: 'Gricel',
+            lastname: 'Sepulveda',
+        },
+        item: {
+            id: dataId.id,
+            title: dataId.title, 
+            price: {
+                currency: dataId.currency_id, 
+                amount: dataId.price,
+                decimals: 0
+            },
+            picture: getMainPicture(dataId.pictures), 
+            condition: translateCondition(dataId.condition),
+            free_shipping: dataId.shipping.free_shipping,
+            sold_quantity: dataId.sold_quantity,
+            description: dataDescription.plain_text
+        }
+    }
     return dataFormated
 }
 
@@ -94,7 +142,7 @@ app.get('/api/items/search/:query', async function(req, res) {
 app.get('/api/items/:id', async function(req, res) {
     const data_id = await fetchProductId(req.params.id)
     const data_description = await fetchProductDescription(req.params.id)
-    res.send({data_id, data_description})
+    res.send(formatProduct(data_id, data_description))
 })
 
 app.listen('3000', function() {
