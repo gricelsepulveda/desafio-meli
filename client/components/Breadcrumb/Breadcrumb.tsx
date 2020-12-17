@@ -1,32 +1,38 @@
 //IMPORTS
-import React from "react"
+import React, {useContext, useEffect} from "react"
+import Context from "../../views/Context"
+import { SearchResult } from "../Search/Search"
 
 import "./breadcrumb.scss" //Styles
 
-export type BreadcrumbType = {
-    name: string,
-    link: string
-}
-
-type BreadcrumbProps = {
-    data: BreadcrumbType[]
-}
-
-const Breadcrumb:React.FunctionComponent<BreadcrumbProps> = (props) => {
-
-    const renderBreadcrumblist = (data:BreadcrumbType[]) => {
-        return data.map((breadcrumb, index) => 
-            <li className="ml-breadcrumb-element" key={`${breadcrumb.name}-${index}`}>
-                <a className="ml-breadcrumb-link" href={breadcrumb.link} tabIndex={0}>
-                    {breadcrumb.name}
-                </a>
-            </li>
-        )
+const Breadcrumb:React.FunctionComponent = () => {
+    const context = useContext(Context)
+    const renderBreadcrumblist = (data:SearchResult['categories']) => {
+        if (data != undefined) {
+            return data.map((breadcrumb, index) => 
+                <li className="ml-breadcrumb-element" key={`${breadcrumb}-${index}`}>
+                    <a className="ml-breadcrumb-link" href='#' tabIndex={0}>
+                        {breadcrumb}
+                    </a>
+                </li>
+            )
+        }
+        else {
+            return (   
+                <li className="ml-breadcrumb-element empty" key={`ml-breadcrumb-empty-0`}>
+                    <a className="ml-breadcrumb-link" href='#' tabIndex={0}>
+                        Todo
+                    </a>
+                </li>
+            )
+        }
     }
+
+    useEffect(() => {}, [context.searchResult])
 
     return (
         <ul className="ml-breadcrumb">
-            { renderBreadcrumblist(props.data) }
+            { renderBreadcrumblist(context.searchResult.categories) }
         </ul>
     )
 }

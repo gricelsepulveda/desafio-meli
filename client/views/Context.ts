@@ -3,12 +3,6 @@ import { SearchResult } from '../components/Search/Search';
 import { ProductDetail } from './product/ProductView'
 
 export type ContextType = {
-    //General states
-    viewport: 'mobile' | 'desktop',
-    setViewport: (param: ContextType['viewport']) => void,
-    activeView: string,
-    setActiveView: (param: ContextType['activeView']) => void
-    //Search related states
     search: string,
     setSearch: (param: ContextType['search']) => void,
     searchResult: SearchResult,
@@ -20,12 +14,6 @@ export type ContextType = {
 }
 
 const context = createContext<ContextType>({
-    //General states
-    viewport: 'desktop',
-    setViewport: () => null,
-    activeView: '',
-    setActiveView: () => null,
-    //Search related states
     search: '',
     setSearch: () => null,
     searchResult: {

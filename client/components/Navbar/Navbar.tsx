@@ -7,8 +7,6 @@ import "./navbar.scss" //Styles
 
 type Navprops = {
     color: 'color-1' | 'color-2';
-    desktopLogo: string, 
-    mobileLogo: string,
     onSearch: (search: string) => void
 }
 
@@ -18,11 +16,12 @@ const Navbar:React.FunctionComponent<Navprops> = (props) => {
         //@ts-ignore
         window.location = 'http://localhost:8080'
     }
+    
     return (
         <nav className={`ml-navbar ${props.color != undefined ? props.color : ''}`}>
             <img 
                 className="ml-navbar-brand"
-                src={context.viewport == 'mobile' ? props.mobileLogo : props.desktopLogo}
+                src='https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-desktop.png'
                 alt="logo mercadolibre"
                 tabIndex={0}
                 onClick={handleHome}

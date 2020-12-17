@@ -14,19 +14,10 @@ import Breadcrumb from "../components/Breadcrumb/Breadcrumb"
 import SearchView from "./search/SearchView"
 import ProductView, { ProductDetail } from "./product/ProductView"
 
-//DummyData
-import dummyBreadcrumb from "../components/Breadcrumb/dummyBreadcrumb"
-
 //Styles
 import "../styles/common/general.scss"
 
-export type viewport = 'mobile' | 'desktop'
-
-
 const Layout:React.FunctionComponent = () => {
-    const [viewport, setViewport] = useState<'desktop' | 'mobile'>('desktop')
-    const [activeView, setActiveView] = useState<string>('')
-    //Search related states
     const [search, setSearch] = useState<string>('')
     const [searchResult, setSearchResult] = useState<any>([])
     const [selectedProduct, setSelectedProduct] = useState<string>('')
@@ -46,12 +37,6 @@ const Layout:React.FunctionComponent = () => {
     })
 
     const contextStates:ContextType = {
-        //General states
-        viewport: viewport,
-        setViewport: setViewport,
-        activeView: activeView,
-        setActiveView: setActiveView,
-        //Search related states
         search: search,
         setSearch: setSearch,
         searchResult: searchResult,
@@ -71,11 +56,9 @@ const Layout:React.FunctionComponent = () => {
                 <div className="ml-layout">
                     <Navbar
                         color="color-1"
-                        desktopLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-desktop.png"
-                        mobileLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-mobile.png"
                         onSearch={handleSearch}
                     />
-                    <Breadcrumb data={dummyBreadcrumb}/>
+                    <Breadcrumb/>
                     <Switch>
                         <Route exact path={'/'}>
                             <SearchView/>
