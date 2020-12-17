@@ -11,7 +11,7 @@ const Breadcrumb:React.FunctionComponent = () => {
         if (data != undefined) {
             return data.map((breadcrumb, index) => 
                 <li className="ml-breadcrumb-element" key={`${breadcrumb}-${index}`}>
-                    <a className="ml-breadcrumb-link" href='#' tabIndex={0}>
+                    <a className="ml-breadcrumb-link" aria-label={breadcrumb} href='#' tabIndex={0}>
                         {breadcrumb}
                     </a>
                 </li>
@@ -20,7 +20,7 @@ const Breadcrumb:React.FunctionComponent = () => {
         else {
             return (   
                 <li className="ml-breadcrumb-element empty" key={`ml-breadcrumb-empty-0`}>
-                    <a className="ml-breadcrumb-link" href='#' tabIndex={0}>
+                    <a className="ml-breadcrumb-link" aria-label='todo' href='#' tabIndex={0}>
                         Todo
                     </a>
                 </li>

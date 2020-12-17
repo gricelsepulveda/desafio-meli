@@ -1,13 +1,13 @@
 //IMPORTS
 import React from "react"
 import { Link } from "react-router-dom"
-import { ProductType } from "../../types/types"
-import { getPrice } from "../../aux/price"
+import { ProductType } from "../../../types/types"
+import { getPrice } from "../../../aux/price"
 
 const Product:React.FunctionComponent<ProductType> = (props) => {
     return (
         <li className="ml-product-list-element" tabIndex={0}>
-            <Link to={`/product/${props.id}`}>
+            <Link to={`/product/${props.id}`} aria-label={props.title}>
                 <article className="ml-product-list-article">
                     <div className="ml-product-list-element-wrapper">
                         <img 

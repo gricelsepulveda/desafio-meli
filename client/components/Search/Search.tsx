@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import Context from "../../views/Context"
 
 import "./search.scss" //Styles
+import Product from "../../views/product/ProductList/Product"
 
 type SearchProps = {
     placeholder: string | undefined,
@@ -34,7 +35,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
     const renderList = (data:ProductType[]) => {
 
         let normalResults:React.ReactElement[] = [
-            <li className="ml-search-list-element">
+            <li className="ml-search-list-element" aria-label='sin resultados' key="ml-search-empty">
                 <p className="ml-search-list-element-text">
                     Sin resultados
                 </p>
@@ -47,11 +48,10 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                 for (let i:number=0; i < (data.length > props.maxItems ? props.maxItems : data.length); i++){
                     let result = data[i]
                     normalResults.push(
-                        <Link to={`/product/${result.id}`} key={`${result.title.split(' ').join('-')}-${i}`}>
+                        <Link aria-label={result.title} to={`/product/${result.id}`} key={`${result.title.split(' ').join('-')}-${i}`}>
                             <li 
                                 className="ml-search-list-element"
                                 onClick={() => handleClick('')}
-                                tabIndex={0}
                             >
                                 <i className="ml-search-list-icon meli-font search"/>
                                 <p className="ml-search-list-element-text">

@@ -1,11 +1,11 @@
 //IMPORTS
-import React, { useContext, useEffect} from "react"
+import React, { useContext} from "react"
 
 //Context
 import Context from "../Context"
 
 //Components
-import ProductList from "../../components/ProductList/ProductList"
+import ProductList from "../product/ProductList/ProductList"
 
 const SearchView:React.FunctionComponent = () => {
     const context = useContext(Context)

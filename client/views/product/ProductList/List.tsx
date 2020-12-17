@@ -1,7 +1,7 @@
 //IMPORTS
 import React, { Props } from "react"
 import Product from "./Product"
-import { Price, ProductType } from "../../types/types"
+import { Price, ProductType } from "../../../types/types"
 
 type ProductProps = {
     data: ProductType[],

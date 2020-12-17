@@ -10,7 +10,6 @@ import { getPrice } from "../../aux/price"
 
 //Styles
 import '../../styles/views/product-view.scss'
-import { ProductDetail} from '../../types/types'
 
 const ProductView:React.FunctionComponent = () => {
     const id = window.location.href.split('/')[4]

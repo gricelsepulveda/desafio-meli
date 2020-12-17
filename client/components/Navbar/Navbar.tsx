@@ -16,7 +16,7 @@ const Navbar:React.FunctionComponent<Navprops> = (props) => {
     
     return (
         <nav className={`ml-navbar ${props.color != undefined ? props.color : ''}`}>
-            <Link to={"/"}>
+            <Link to={"/"} aria-label='Volver al inicio'>
                 <img 
                     className="ml-navbar-brand"
                     src='https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-desktop.png'
