@@ -56,14 +56,14 @@ const Layout:React.FunctionComponent = () => {
                         mobileLogo="https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-mobile.png"
                     />
                     <Breadcrumb data={dummyBreadcrumb}/>
-                        <Switch>
-                            <Route exact path={'/'}>
-                                <SearchView/>
-                            </Route>
-                            <Route exact path={'/product'}>
-                                <ProductView productData={productDetailDummy}/>
-                            </Route>
-                        </Switch>
+                    <Switch>
+                        <Route exact path={'/'}>
+                            <SearchView/>
+                        </Route>
+                        <Route exact path={'/product'}>
+                            <ProductView productData={productDetailDummy}/>
+                        </Route>
+                    </Switch>
                 </div>
         </Context.Provider>
     )

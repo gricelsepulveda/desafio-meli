@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: {
-    main: resolve('./client/index.tsx')
+    main: resolve('./client/'),
   },
   module: {
     rules: [
@@ -56,6 +56,9 @@ const config = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.scss']
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebPackPlugin({
