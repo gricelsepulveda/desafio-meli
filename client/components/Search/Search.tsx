@@ -7,7 +7,6 @@ import { Link } from "react-router-dom"
 import Context from "../../views/Context"
 
 import "./search.scss" //Styles
-import Product from "../../views/product/ProductList/Product"
 
 type SearchProps = {
     placeholder: string | undefined,
@@ -76,7 +75,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
 
     useEffect(() => {
         fetchResults()
-    }, [context.searchResult.items, context.search])
+    }, [context.search, window.location.href.split('/')[4]])
 
 
     return (

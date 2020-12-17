@@ -7,6 +7,9 @@ import Context from "../Context"
 //Components
 import ProductList from "../product/ProductList/ProductList"
 
+//Styles
+import '../../styles/views/search-view.scss'
+
 const SearchView:React.FunctionComponent = () => {
     const context = useContext(Context)
 
