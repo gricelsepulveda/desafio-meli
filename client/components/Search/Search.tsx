@@ -1,5 +1,5 @@
 //IMPORTS
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { ProductType } from "../ProductList/List"
 
 //Context
@@ -42,9 +42,8 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
     const renderList = (data:ProductType[]) => {
         let normalResults:React.ReactElement[] = []
         if (data != undefined){
-            console.log(data)
             if (data.length > 0){
-                for (let i:number=0; i < data.length; i++){
+                for (let i:number=0; i < (data.length > props.maxItems ? props.maxItems : data.length); i++){
                     let result = data[i]
                     normalResults.push(
                         <li 
@@ -65,6 +64,10 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
         return normalResults
     }
 
+    useEffect(() => {
+    }, [context.searchResult.items, context.search])
+
+
     return (
         <div 
             className={`ml-search ${active ? 'active' : ''}`}
@@ -84,7 +87,7 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
                 </button>
             </div>
             <ul className="ml-search-list">
-                { context.searchResult.items != undefined ?  context.searchResult.items.length > 0 ? renderList(context.searchResult.items) : null : null}
+                { renderList(context.searchResult.items)}
             </ul>
         </div>
     )

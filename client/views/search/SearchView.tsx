@@ -11,14 +11,13 @@ import { SearchResult } from "../../components/Search/Search"
 
 const SearchView:React.FunctionComponent = () => {
     const context = useContext(Context)
-    const [searchResult, setSearchResult] = useState<SearchResult>(context.searchResult)
 
     const fetchResults = async () => {
         const data = await fetch(`http://localhost:3000/api/items/search/${context.search}`)
         .then((response:any) => {
             return response.json()
         })
-        setSearchResult(data.data)
+        context.setSearchResult(data.data)
     }
 
     useEffect(() => {
@@ -26,7 +25,10 @@ const SearchView:React.FunctionComponent = () => {
     }, [context.search])
 
     return (
-        <ProductList data={searchResult.items != undefined ? searchResult.items : []}/>
+        <ProductList 
+            data={context.searchResult.items != undefined ? context.searchResult.items : []}
+            maxItems={20}
+        />
     )
 }
 

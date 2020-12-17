@@ -110,6 +110,7 @@
                 margin-right: 10px;
             }
             .ml-search-list-element-text{
+                @include text-overflow;
                 .ml-search-list-element-link{
                     color: $color-2;
                     &:visited, &:focus{
