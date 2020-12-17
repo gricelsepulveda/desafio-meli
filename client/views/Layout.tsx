@@ -54,8 +54,11 @@ const Layout:React.FunctionComponent = () => {
     const handleSearch = (search:string) => {
         setSearch(search)
         let currentUrl = history.location.pathname
-        if (currentUrl.indexOf("product") == -1){
-            history.location.search = `?search=${search}`
+        if (currentUrl.indexOf("product") == -1 && search != ''){
+            history.push(`/items/search/${search}`)
+        }
+        else {
+            history.push('/')
         }
     }
 
@@ -71,7 +74,7 @@ const Layout:React.FunctionComponent = () => {
                         <Route exact path={'/'}>
                             <SearchView/>
                         </Route>
-                        <Route path={'/items/?search=:search'}>
+                        <Route path={`/items/search/:search`}>
                             <SearchView/>
                         </Route>
                         <Route path={'/product/:id'}>

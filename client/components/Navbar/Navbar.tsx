@@ -13,10 +13,22 @@ type Navprops = {
 
 const Navbar:React.FunctionComponent<Navprops> = (props) => {
     const context = useContext(Context)
+
+    const handleReset = () => {
+        context.setSearch('')
+        context.setSearchResult({
+            author: {
+                name: '',
+                lastname: ''
+            },
+            categories: [],
+            items: []
+        })
+    }
     
     return (
         <nav className={`ml-navbar ${props.color != undefined ? props.color : ''}`}>
-            <Link to={"/"} aria-label='Volver al inicio'>
+            <Link to={"/"} aria-label='Volver al inicio' onClick={handleReset}>
                 <img 
                     className="ml-navbar-brand"
                     src='https://gricel.sfo2.digitaloceanspaces.com/mercadolibre/logo-meli-desktop.png'

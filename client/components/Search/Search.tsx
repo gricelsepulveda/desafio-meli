@@ -1,7 +1,7 @@
 //IMPORTS
 import React, { useState, useContext, useEffect, useRef } from "react"
 import { ProductType } from "../../types/types"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 //Context
 import Context from "../../views/Context"
@@ -16,7 +16,7 @@ type SearchProps = {
 
 const Search:React.FunctionComponent<SearchProps> = (props) => {
     const context = useContext(Context)
-    const inputRef = useRef(null)
+    const history = useHistory();
 
     const [active, setActive] = useState(false)
 
@@ -74,17 +74,18 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
         context.setSearchResult(data.data)
     }
 
-    let id =  window.location.href.split('/')[4] != undefined ? window.location.href.split('/')[4] : 0
-    let searchResultUrl = window.location.href.split('/')
+    let currentUrl = history.location.pathname
+
+    let id =  currentUrl.indexOf("product") == 1 ? currentUrl.split('/product/')[0] : 0
 
     useEffect(() => {
-        if (searchResultUrl.length > 4 && context.search == ''){
-            fetchResults(searchResultUrl[4].split('=')[1])
+        if (currentUrl.indexOf("product") == -1 && context.search == ''){
+            fetchResults(history.location.pathname.split('/items/search/')[1])
         }
         else {
             fetchResults(context.search)
         }
-    }, [context.search, id])
+    }, [context.search, id, currentUrl])
 
 
     return (
