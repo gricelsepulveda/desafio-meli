@@ -1,7 +1,7 @@
 //IMPORTS
 import React from "react"
 import { Link } from "react-router-dom"
-import { ProductType } from "./List"
+import { ProductType } from "../../types/types"
 import { getPrice } from "../../aux/price"
 
 const Product:React.FunctionComponent<ProductType> = (props) => {

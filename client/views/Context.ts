@@ -1,6 +1,5 @@
 import { createContext } from 'react';
-import { SearchResult } from '../components/Search/Search';
-import { ProductDetail } from './product/ProductView'
+import { SearchResult, ProductDetail } from '../types/types';
 
 export type ContextType = {
     search: string,

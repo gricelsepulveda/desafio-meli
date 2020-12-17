@@ -1,21 +1,7 @@
 //IMPORTS
 import React, { Props } from "react"
 import Product from "./Product"
-
-export type Price = {
-    currency: string,
-    amount: number,
-    decimals: number
-}
-
-export type ProductType = {
-    id: string,
-    title: string,
-    picture: string,
-    price: Price,
-    condition: string,
-    free_shipping: boolean
-}
+import { Price, ProductType } from "../../types/types"
 
 type ProductProps = {
     data: ProductType[],

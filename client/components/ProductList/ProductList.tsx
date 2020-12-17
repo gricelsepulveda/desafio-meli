@@ -1,6 +1,7 @@
 //IMPORTS
 import React from "react"
-import List, { ProductType } from "./List"
+import List from "./List"
+import { ProductType } from "../../types/types"
 
 import "./product-list.scss" //Styles
 

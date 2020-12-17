@@ -10,18 +10,13 @@ import { getPrice } from "../../aux/price"
 
 //Styles
 import '../../styles/views/product-view.scss'
-import { ProductType } from "../../components/ProductList/List"
-
-export interface ProductDetail extends ProductType {
-    sold_quantity: number,
-    description: string
-}
+import { ProductDetail} from '../../types/types'
 
 const ProductView:React.FunctionComponent = () => {
+    const id = window.location.href.split('/')[4]
     const context = useContext(Context)
 
     const fetchProduct = async () => {
-        let id = window.location.href.split('/')[4]
         const data = await fetch(`http://localhost:3000/api/items/${id}`)
         .then((response:any) => {
             return response.json()
@@ -31,7 +26,7 @@ const ProductView:React.FunctionComponent = () => {
 
     useEffect(() => {
         fetchProduct()
-    }, [context.selectedProduct])
+    }, [context.selectedProduct, id])
 
 
     return (

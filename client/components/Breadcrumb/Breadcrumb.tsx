@@ -1,7 +1,7 @@
 //IMPORTS
 import React, {useContext, useEffect} from "react"
 import Context from "../../views/Context"
-import { SearchResult } from "../Search/Search"
+import { SearchResult } from "../../types/types"
 
 import "./breadcrumb.scss" //Styles
 

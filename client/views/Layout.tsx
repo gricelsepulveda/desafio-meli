@@ -12,7 +12,10 @@ import Breadcrumb from "../components/Breadcrumb/Breadcrumb"
 
 //Views
 import SearchView from "./search/SearchView"
-import ProductView, { ProductDetail } from "./product/ProductView"
+import ProductView from "./product/ProductView"
+
+//Types
+import  { ProductDetail } from "../types/types"
 
 //Styles
 import "../styles/common/general.scss"

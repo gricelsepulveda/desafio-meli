@@ -1,6 +1,6 @@
 //IMPORTS
 import React, { useState, useContext, useEffect } from "react"
-import { ProductType } from "../ProductList/List"
+import { ProductType } from "../../types/types"
 import { Link } from "react-router-dom"
 
 //Context
@@ -12,15 +12,6 @@ type SearchProps = {
     placeholder: string | undefined,
     maxItems: number,
     onSearch: (search: string) => void
-}
-
-export type SearchResult = {
-    author: {
-        name: string,
-        lastname: string
-    },
-    categories: string[],
-    items: ProductType[]
 }
 
 const Search:React.FunctionComponent<SearchProps> = (props) => {
@@ -41,9 +32,18 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
     }
 
     const renderList = (data:ProductType[]) => {
-        let normalResults:React.ReactElement[] = []
+
+        let normalResults:React.ReactElement[] = [
+            <li className="ml-search-list-element">
+                <p className="ml-search-list-element-text">
+                    Sin resultados
+                </p>
+            </li>
+        ]
+
         if (data != undefined){
             if (data.length > 0){
+                normalResults = []
                 for (let i:number=0; i < (data.length > props.maxItems ? props.maxItems : data.length); i++){
                     let result = data[i]
                     normalResults.push(
@@ -66,7 +66,16 @@ const Search:React.FunctionComponent<SearchProps> = (props) => {
         return normalResults
     }
 
+    const fetchResults = async () => {
+        const data = await fetch(`http://localhost:3000/api/items/search/${context.search}`)
+        .then((response:any) => {
+            return response.json()
+        })
+        context.setSearchResult(data.data)
+    }
+
     useEffect(() => {
+        fetchResults()
     }, [context.searchResult.items, context.search])
 
 
