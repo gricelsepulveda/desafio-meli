@@ -29,7 +29,7 @@ const Layout:React.FunctionComponent = () => {
     const [activeView, setActiveView] = useState<string>('')
     //Search related states
     const [search, setSearch] = useState<string>('')
-    const [searchResult, setSearchResult] = useState<any>({})
+    const [searchResult, setSearchResult] = useState<any>([])
     const [selectedProduct, setSelectedProduct] = useState<string>('')
 
     const contextStates:ContextType = {

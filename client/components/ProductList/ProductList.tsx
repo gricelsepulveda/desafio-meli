@@ -5,7 +5,7 @@ import List, { ProductType } from "./List"
 import "./product-list.scss" //Styles
 
 type ProductListProps = {
-    data: ProductType[]
+    data: ProductType[] | []
 }
 
 const ProductList:React.FunctionComponent<ProductListProps> = (props) => {

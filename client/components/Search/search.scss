@@ -83,18 +83,6 @@
         border-top: 1px solid rgba($black, 0.2);
         border-left: 1px solid rgba($black, 0.05);
         border-right: 1px solid rgba($black, 0.05);
-        .ml-search-list-element-title{
-            border-top: 1px solid rgba($black, 0.2); 
-            padding-top: 10px;
-            margin-left: 10px;
-            width: calc(100% - 20px);
-            color: $black;
-            color: rgba($black, 0.5);
-            font: {
-                size: 14px;
-                weight: 400;
-            }
-        }
         .ml-search-list-element{
             display: flex;
             flex-direction: row;

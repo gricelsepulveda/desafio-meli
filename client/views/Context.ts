@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { SearchResult } from '../components/Search/Search';
 
+
 export type ContextType = {
     //General states
     viewport: 'mobile' | 'desktop',
@@ -10,7 +11,7 @@ export type ContextType = {
     //Search related states
     search: string,
     setSearch: (param: ContextType['search']) => void,
-    searchResult: any,
+    searchResult: SearchResult,
     setSearchResult: (param: ContextType['searchResult']) => void,
     selectedProduct: string,
     setSelectedProduct: (param: ContextType['selectedProduct']) => void
@@ -25,7 +26,14 @@ const context = createContext<ContextType>({
     //Search related states
     search: '',
     setSearch: () => null,
-    searchResult: {},
+    searchResult: {
+        author: {
+            name: '',
+            lastname: ''
+        },
+        categories: [],
+        items: []
+    },
     setSearchResult: () => null,
     selectedProduct: '',
     setSelectedProduct: () => null

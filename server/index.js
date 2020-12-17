@@ -3,7 +3,6 @@ const app = express();
 const axios = require('axios');
 const cors = require('cors')
 
-const config  = require('./cors')
 app.use(cors())
 
 const formatSearchProductsResults = (data) => {
@@ -115,53 +114,59 @@ const formatProduct = (dataId, dataDescription) => {
 
 async function fetchSearch(query) {
     return await axios({
-        method: 'get',
-        url: `https://api.mercadolibre.com/sites/MLA/search?q=${query}`
+        method: 'GET',
+        url: `https://api.mercadolibre.com/sites/MLA/search?q=${query}`,
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+        }
     })
     .then(function (response) {
         return response.data
     })
     .catch(function (error) {
-        console.log(error);
     })
 }
 
 async function fetchProductId(id){
     return await axios({
-        method: 'get',
-        url: `https://api.mercadolibre.com/items/${id}`
+        method: 'GET',
+        url: `https://api.mercadolibre.com/items/${id}`,
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+        }
     })
     .then(function (response) {
         return response.data
     })
     .catch(function (error) {
-        console.log(error);
     })
 }
     
 async function fetchProductDescription(id) {
     return await axios({
-        method: 'get',
-        url: `https://api.mercadolibre.com/items/${id}/description`
+        method: 'GET',
+        url: `https://api.mercadolibre.com/items/${id}/description`,
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+        }
     })
     .then(function (response) {
         return response.data
     })
     .catch(function (error) {
-        console.log(error);
     })
 }
 
 //1st endpoint
 app.get('/api/items/search/:query', async function(req, res) {
-    const _data = await fetchSearch(req.params.query != undefined ? req.params.query : '')
+    const _data = await fetchSearch(req.params.query)
     res.send({data: formatSearchProductsResults(_data)})
 })
 
 //2st endpoint
 app.get('/api/items/:id', async function(req, res) {
     const data_id = await fetchProductId(req.params.id)
-    const data_description = await fetchProductDescription(req.params.id != undefined ? req.params.id : '')
+    const data_description = await fetchProductDescription(req.params.id)
     res.send({data: formatProduct(data_id, data_description)})
 })
 

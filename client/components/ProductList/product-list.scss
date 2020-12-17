@@ -53,12 +53,14 @@
                         justify-content: flex-start;
                         width: 100%;
                         .ml-product-list-description-title{
+                            width: 100%;
                             margin-top: 10px;
                             color: $black;
                             font: {
                                 size: 16px;
                                 weight: 400;
                             }
+                            @include text-overflow;
                         }
                         .ml-product-list-description-price{
                             color: $black;
@@ -69,7 +71,7 @@
                         }
                     }
                 }
-                .ml-product-list-description-other{
+                .ml-product-list-description-condition{
                     width: 200px;
                     align-self: flex-start;
                     color: $black;

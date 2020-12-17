@@ -2,11 +2,19 @@
 import React from "react"
 import Product from "./Product"
 
+export type Price = {
+    currency: string,
+    amount: number,
+    decimals: number
+}
+
 export type ProductType = {
-    name: string,
-    image: string,
-    price: number,
-    other: string
+    id: string,
+    title: string,
+    picture: string,
+    price: Price,
+    condition: string,
+    free_shipping: boolean
 }
 
 type ProductProps = {
@@ -17,15 +25,18 @@ const List:React.FunctionComponent<ProductProps> = (props) => {
     return (
         <ul className="ml-product-list-wrapper">
             {
-                props.data.map((product:ProductType, index:number) => 
+                props.data != undefined ? props.data.length > 0 ?
+                    props.data.map((product:ProductType, index:number) => 
                     <Product
-                        name={product.name}
-                        image={product.image}
+                        id={product.id}
+                        title={product.title}
+                        picture={product.picture}
                         price={product.price}
-                        other={product.other}
-                        key={`${product.name} ${index}`}
-                    />
-                )
+                        condition={product.condition}
+                        free_shipping={product.free_shipping}
+                        key={`${product.title} ${index}`}
+                    />) 
+                    : null : null
             }
         </ul>
     )
