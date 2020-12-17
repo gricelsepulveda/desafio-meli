@@ -4,7 +4,7 @@ const axios = require('axios');
 const cors = require('cors')
 
 const config  = require('./cors')
-app.use(cors(config.application.cors.server))
+app.use(cors())
 
 const formatSearchProductsResults = (data) => {
     let dataFormated = {}

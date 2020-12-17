@@ -14,14 +14,12 @@ const SearchView:React.FunctionComponent = () => {
     const context = useContext(Context)
     const [searchResult, setSearchResult] = useState([])
 
-    const fetchConversations = () => {
-        fetch(`http://localhost:3000/api/items/search/${context.search}`, {
-            headers: {
-                "Content-Type":'application/json'
-            }
+    const fetchConversations = async () => {
+        const x = await fetch(`http://localhost:3000/api/items/search/${context.search}`)
+        .then((response:any) => {
+            return response.json()
         })
-        .then(response => console.log(response))
-        .then((data) => console.log(data))
+        console.log(x)
     }
 
     useEffect(() => {
