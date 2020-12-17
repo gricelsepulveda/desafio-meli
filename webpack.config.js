@@ -2,11 +2,13 @@ const { resolve } = require('path')
 
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: {
     main: resolve('./client/'),
+  },
+  output: {
+    publicPath: "/"
   },
   module: {
     rules: [
