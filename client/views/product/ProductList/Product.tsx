@@ -10,12 +10,16 @@ const Product:React.FunctionComponent<ProductType> = (props) => {
             <Link to={`/product/${props.id}`} aria-label={props.title}>
                 <article className="ml-product-list-article">
                     <div className="ml-product-list-element-wrapper">
-                        <img 
-                            className="ml-product-list-element-image"
-                            src={props.picture}
-                            alt={props.title}
-                            tabIndex={0}
-                        />
+                        <figure
+                            className="ml-product-list-element-figure"
+                        >
+                            <img 
+                                className="ml-product-list-element-image"
+                                src={props.picture}
+                                alt={props.title}
+                                tabIndex={0}
+                            />
+                        </figure>
                         <div className="ml-product-list-description">
                             <h2 className="ml-product-list-description-title" tabIndex={0}>
                                 {props.title}

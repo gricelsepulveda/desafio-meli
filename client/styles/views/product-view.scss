@@ -129,13 +129,29 @@
                 .ml-product-list-element-wrapper{
                     @include flex-row-center;
                     width: 100%;
-                    .ml-product-list-element-image{
+                    @media #{$xs}{
+                        flex-direction: column;
+                        justify-content: flex-start;
+                    }
+                    .ml-product-list-element-figure{
                         width: 200px;
                         height: 200px;
+                        background-color: $white;
                         margin-right: 20px;
+                        @include flex-row-center;
+                        overflow: hidden;
                         @media #{$sm}{
                             width: 150px;
                             min-width: 150px;
+                            height: 150px;
+                            min-height: 150px;
+                        }
+                        @media #{$xs}{
+                            margin-right: 0px;
+                            margin-bottom: 20px;
+                        }
+                        .ml-product-list-element-image{
+                            width: 100%;
                             height: auto;
                         }
                     }
